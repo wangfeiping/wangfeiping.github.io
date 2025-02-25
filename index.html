@@ -62,6 +62,20 @@
     <div id="text-container">
         <h1 id="text">SF.box</h1>
         <p id="subtext">Coming Soon</p>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const textElement = document.getElementById('text');
+            const subtextElement = document.getElementById('subtext');
+            // const words = ['Sci-Fi', 'SF.box'];
+            const subWords = ['Sci-Fi Metaverse', 'Coming Soon'];
+            let index = 0;
+            setInterval(() => {
+                // textElement.textContent = words[index];
+                subtextElement.textContent = subWords[index];
+                index = (index + 1) % subWords.length;
+            }, 2000);
+            });
+        </script>
     </div>
 </body>
 </html>
