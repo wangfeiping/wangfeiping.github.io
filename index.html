@@ -10,7 +10,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            background: #fff;
+            background: #000;
             font-family: 'Segoe UI', Arial, sans-serif;
             /* overflow: hidden; */
             transition: background 0.8s cubic-bezier(.77,0,.18,1);
@@ -49,7 +49,7 @@
         }
         .main-title {
             font-size: 14vw;
-            color: #0a1833;
+            color: #fff;
             letter-spacing: 0.1em;
             font-weight: bold;
             margin: 0 0 0.2em 0;
@@ -57,7 +57,7 @@
         }
         .subtitle {
             font-size: 2.5vw;
-            color: #0a1833;
+            color: #fff;
             letter-spacing: 0.05em;
             opacity: 0.85;
             margin: 0;
@@ -133,7 +133,8 @@
     <script>
     // 每一屏的粒子颜色（与背景色对比强烈）
     const particleColors = [
-        '#0a1833', // 主题页：深蓝
+        // '#0a1833', // 主题页：深蓝
+        '#999999',
         '#fff',    // 页1：白色
         '#fff',    // 页2：白色
         '#232526', // 页3：深灰
@@ -148,12 +149,12 @@
         }
         particlesJS('particles-js', {
             particles: {
-                number: { value: 100, density: { enable: true, value_area: 800 } },
+                number: { value: 19, density: { enable: true, value_area: 800 } },
                 color: { value: color },
                 shape: { type: 'circle' },
                 opacity: { value: 0.8, random: false },
                 size: { value: 7, random: true },
-                line_linked: { enable: true, distance: 150, color: color, opacity: 0.5, width: 2 },
+                line_linked: { enable: true, distance: 350, color: '#bbbbbb', opacity: 0.5, width: 2 },
                 move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out' }
             },
             interactivity: {
