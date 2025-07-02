@@ -184,7 +184,7 @@
     updateParticlesVisibility();
 
     // 副标题打字机动画
-    const subtitleText = 'A Sci-Fi Metaverse Experience';
+    const subtitleText = 'We are building a creative metaverse—a decentralized, open ecosystem for collaboration.';
     const subtitleElem = document.getElementById('subtitle');
     let i = 0;
     function typeWriter() {
@@ -195,6 +195,68 @@
         }
     }
     typeWriter();
+
+    // 全屏分页滚动
+    (function() {
+        const sections = document.querySelectorAll('.section');
+        let isAutoScrolling = false;
+        let lastScroll = 0;
+        let touchStartY = null;
+
+        function getCurrentPage() {
+            const scrollY = window.scrollY || window.pageYOffset;
+            const vh = window.innerHeight;
+            return Math.round(scrollY / vh);
+        }
+
+        function scrollToPage(pageIdx) {
+            isAutoScrolling = true;
+            const vh = window.innerHeight;
+            window.scrollTo({ top: pageIdx * vh, behavior: 'smooth' });
+            setTimeout(() => { isAutoScrolling = false; }, 700);
+        }
+
+        function handleWheel(e) {
+            if (isAutoScrolling) return;
+            e.preventDefault();
+            const currentPage = getCurrentPage();
+            if (e.deltaY > 0 && currentPage < sections.length - 1) {
+                scrollToPage(currentPage + 1);
+            } else if (e.deltaY < 0 && currentPage > 0) {
+                scrollToPage(currentPage - 1);
+            }
+        }
+
+        function handleKey(e) {
+            if (isAutoScrolling) return;
+            const currentPage = getCurrentPage();
+            if (e.key === 'ArrowDown' && currentPage < sections.length - 1) {
+                scrollToPage(currentPage + 1);
+            } else if (e.key === 'ArrowUp' && currentPage > 0) {
+                scrollToPage(currentPage - 1);
+            }
+        }
+
+        function handleTouchStart(e) {
+            if (e.touches.length === 1) touchStartY = e.touches[0].clientY;
+        }
+        function handleTouchEnd(e) {
+            if (touchStartY === null) return;
+            const touchEndY = e.changedTouches[0].clientY;
+            const currentPage = getCurrentPage();
+            if (touchStartY - touchEndY > 40 && currentPage < sections.length - 1) {
+                scrollToPage(currentPage + 1);
+            } else if (touchEndY - touchStartY > 40 && currentPage > 0) {
+                scrollToPage(currentPage - 1);
+            }
+            touchStartY = null;
+        }
+
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        window.addEventListener('keydown', handleKey);
+        window.addEventListener('touchstart', handleTouchStart);
+        window.addEventListener('touchend', handleTouchEnd);
+    })();
     </script>
 </body>
 </html>
