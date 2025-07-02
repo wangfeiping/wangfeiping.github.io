@@ -104,7 +104,7 @@
     <div class="sections" id="sections">
         <div class="section" style="z-index:1;">
             <h1 class="main-title">SF.box</h1>
-            <div class="subtitle" id="subtitle"></div>
+            <div class="subtitle" id="subtitle">A creative metaverse, a decentralized ecosystem</div>
         </div>
         <div class="section" style="z-index:1;">
             <div class="section-img">图片1</div>
@@ -180,21 +180,15 @@
     }
     window.addEventListener('scroll', updateParticlesVisibility);
     window.addEventListener('resize', updateParticlesVisibility);
-    // 初始设置
-    updateParticlesVisibility();
+    // 页面加载完成后自动显示首页粒子效果
+    window.addEventListener('DOMContentLoaded', () => {
+        updateParticlesVisibility();
+    });
 
     // 副标题打字机动画
-    const subtitleText = 'We are building a creative metaverse—a decentralized, open ecosystem for collaboration.';
+    const subtitleText = 'A creative metaverse, a decentralized ecosystem';
     const subtitleElem = document.getElementById('subtitle');
-    let i = 0;
-    function typeWriter() {
-        if (i <= subtitleText.length) {
-            subtitleElem.textContent = subtitleText.slice(0, i);
-            i++;
-            setTimeout(typeWriter, 90);
-        }
-    }
-    typeWriter();
+    subtitleElem.textContent = subtitleText;
 
     // 全屏分页滚动
     (function() {
