@@ -108,34 +108,61 @@
             <div class="subtitle" id="subtitle">A creative metaverse, a decentralized ecosystem</div>
         </div>
         <div class="section" style="z-index:1;">
-            <div class="section-img">图片1</div>
-            <div class="section-content">创作并发布科幻故事《Styx》，并建立基于这个科幻故事的元宇宙</div>
+            <div class="section-img">Styx</div>
+            <div class="section-content">Launch the sci-fi novel Styx and build a metaverse inspired by its universe.</div>
         </div>
         <div class="section" style="z-index:1;">
-            <div class="section-img">图片2</div>
-            <div class="section-content">开发创作工具集，创建创作生态</div>
+            <div class="section-img">Toolkit & Ecosystem</div>
+            <div class="section-content">Build a creative toolkit to establish a content creation ecosystem.</div>
         </div>
         <div class="section" style="z-index:1;">
-            <div class="section-img">图片3</div>
-            <div class="section-content">建立基于各个地区法律，并应用人工智能的审核分级体系，搭建去中心化的生态网络</div>
+            <div class="section-img">AI & Decentralized</div>
+            <div class="section-content">Establish a decentralized ecological network compliant with local jurisdictional regulations, incorporating AI-powered content moderation and classification frameworks.</div>
         </div>
         <div class="section" style="z-index:1;">
-            <div class="section-img">社交</div>
+            <div class="section-img">More</div>
             <div class="section-content">
-                <div style="font-size:2.2vw; font-weight:bold; margin-bottom:1vw; color:#0a1833;">联系我们</div>
-                <div style="margin-bottom:1vw;">Email: <a href='mailto:contact@sfbox.com' style='color:#0a1833;'>contact@sfbox.com</a></div>
                 <div style="margin-bottom:1vw;">Twitter: <a href='https://twitter.com/sfbox' target='_blank' style='color:#0a1833;'>@sfbox</a></div>
                 <div style="margin-bottom:1vw;">GitHub: <a href='https://github.com/sfbox' target='_blank' style='color:#0a1833;'>sfbox</a></div>
-                <div style="margin-bottom:1vw;">微信: SFbox-Official</div>
                 <div style="margin-bottom:1vw;">Telegram: <a href='https://t.me/sfbox' target='_blank' style='color:#0a1833;'>@sfbox</a></div>
             </div>
         </div>
     </div>
     <script>
+    // 粒子颜色渐变数组
+    const particleColorGradient = [
+        '#fff',    // 白色
+        '#ff6b6b', // 红色
+        '#4ecdc4', // 青色
+        '#45b7d1', // 蓝色
+        '#96ceb4', // 绿色
+        '#feca57', // 黄色
+        '#ff9ff3', // 粉色
+        '#54a0ff'  // 天蓝
+    ];
+    let currentColorIndex = 0;
+
+    // 每秒切换粒子颜色
+    // function updateParticleColor() {
+    //     if (window.pJSDom && window.pJSDom.length) {
+    //         const pJS = window.pJSDom[0].pJS;
+    //         const color = particleColorGradient[currentColorIndex];
+    //         pJS.particles.array.forEach(particle => {
+    //             particle.color.value = color;
+    //         });
+    //         pJS.particles.line_linked.color = color;
+    //         pJS.fn.particlesRefresh();
+    //     }
+    //     currentColorIndex = (currentColorIndex + 1) % particleColorGradient.length;
+    // }
+
+    // 启动颜色渐变定时器
+    // setInterval(updateParticleColor, 1000);
+
     // 每一屏的粒子颜色（与背景色对比强烈）
     const particleColors = [
         // '#0a1833', // 主题页：深蓝
-        '#999999',
+        '#fff',
         '#fff',    // 页1：白色
         '#fff',    // 页2：白色
         '#232526', // 页3：深灰
@@ -155,7 +182,7 @@
                 shape: { type: 'circle' },
                 opacity: { value: 0.8, random: false },
                 size: { value: 7, random: true },
-                line_linked: { enable: true, distance: 350, color: '#bbbbbb', opacity: 0.5, width: 2 },
+                line_linked: { enable: true, distance: 350, color: '#fff', opacity: 0.5, width: 2 },
                 move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out' }
             },
             interactivity: {
@@ -174,7 +201,12 @@
         if ((window.scrollY || window.pageYOffset) === 0) {
             particlesDiv.style.opacity = '1';
             particlesDiv.style.pointerEvents = '';
-            loadParticles(particleColors[0]);
+            // loadParticles(particleColors[0]);
+            //获取当前时间的秒数
+            const currentTime = new Date().getSeconds();
+            currentColorIndex = (currentColorIndex + 1 + currentTime) % particleColorGradient.length;
+            const color = particleColorGradient[currentColorIndex];
+            loadParticles(color);
         } else {
             particlesDiv.style.opacity = '0';
             particlesDiv.style.pointerEvents = 'none';
