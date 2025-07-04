@@ -66,9 +66,9 @@
         .section:nth-child(4) {
             background: linear-gradient(135deg, #2a5298 0%, #f7971e 100%);
         }
-        .section:nth-child(5) {
+        /* .section:nth-child(5) {
             background: linear-gradient(135deg, #232526 0%, #414345 100%);
-        }
+        } */
         .section:nth-child(1) .main-title,
         .section:nth-child(1) .subtitle {
             text-align: left;
@@ -194,7 +194,7 @@
                     <div class="section-img">Styx</div>
                     <div class="section-content">Phase One:<br/>
                         Launch the sci-fi novel Styx <br/>
-                        Create more stories about Styx<br/>
+                        create more stories about Styx<br/>
                         and build a metaverse inspired by its universe.</div>
                 </div>
             </div>
@@ -312,7 +312,7 @@
     function updateParticlesVisibility() {
         const particlesDiv = document.getElementById('particles-js');
         // 只有当页面顶部且首页满屏显示时才显示粒子效果
-        if ((window.scrollY || window.pageYOffset) === 0) {
+        // if ((window.scrollY || window.pageYOffset) === 0) {
             particlesDiv.style.opacity = '1';
             particlesDiv.style.pointerEvents = '';
             // loadParticles(particleColors[0]);
@@ -321,13 +321,13 @@
             currentColorIndex = (currentColorIndex + 1 + currentTime) % particleColorGradient.length;
             const color = particleColorGradient[currentColorIndex];
             loadParticles(color);
-        } else {
-            particlesDiv.style.opacity = '0';
-            particlesDiv.style.pointerEvents = 'none';
-        }
+        // } else {
+        //     particlesDiv.style.opacity = '0';
+        //     particlesDiv.style.pointerEvents = 'none';
+        // }
     }
-    window.addEventListener('scroll', updateParticlesVisibility);
-    window.addEventListener('resize', updateParticlesVisibility);
+    // window.addEventListener('scroll', updateParticlesVisibility);
+    // window.addEventListener('resize', updateParticlesVisibility);
     // 页面加载完成后自动显示首页粒子效果
     window.addEventListener('DOMContentLoaded', () => {
         updateParticlesVisibility();
