@@ -50,6 +50,13 @@
             justify-content: left;
             position: relative;
         }
+        .subtitle_column_right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: right;
+            position: relative;
+        }
         .section:nth-child(2) {
             background: linear-gradient(135deg, #0a1833 0%, #1e3c72 100%);
         }
@@ -99,6 +106,38 @@
             box-shadow: 0 2px 16px rgba(10,24,51,0.08);
             user-select: none;
         }
+        .app-img-wrapper {
+            width: 8vw;
+            height: 8vw;
+            max-width: 160px;
+            max-height: 160px;
+            /* background: #e3eaf6; */
+            border-radius: 1vw;
+            margin-bottom: 2vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* font-size: 3vw; */
+            /* color: #b0b8c9; */
+            /* box-shadow: 0 2px 16px rgba(10,24,51,0.08); */
+            user-select: none;
+        }
+        .app-img {
+            width: 6vw;
+            height: 6vw;
+            max-width: 100px;
+            max-height: 100px;
+            background: #e3eaf6;
+            border-radius: 1vw;
+            margin-bottom: 2vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3vw;
+            color: #b0b8c9;
+            box-shadow: 0 2px 16px rgba(10,24,51,0.08);
+            user-select: none;
+        }
         .section-img {
             width: 18vw;
             height: 18vw;
@@ -117,15 +156,15 @@
         }
         .section-content {
             font-size: 2vw;
-            color: #0a1833;
-            background: rgba(255,255,255,0.7);
-            border-radius: 1vw;
-            box-shadow: 0 2px 16px rgba(10,24,51,0.08);
-            padding: 2vw 3vw;
+            color: #fff;
+            /* background: rgba(255,255,255,0.7); */
+            /* border-radius: 1vw; */
+            /* box-shadow: 0 2px 16px rgba(10,24,51,0.08); */
+            /* padding: 2vw 3vw; */
             line-height: 1.7;
             min-height: 5vw;
             max-width: 60vw;
-            text-align: center;
+            text-align: left;
         }
         @media (max-width: 600px) {
             .main-title { font-size: 24vw; }
@@ -151,32 +190,51 @@
         </div>
         <div class="section" style="z-index:1;">
             <div class="subtitle_section">
-            <div class="subtitle_column">
-                <div class="section-img">Styx</div>
-                <div class="subtitle">Phase One:<br/>
-                    Launch the sci-fi novel Styx <br/>
-                    and build a metaverse inspired by its universe.</div>
+                <div class="subtitle_column_right">
+                    <div class="section-img">Styx</div>
+                    <div class="section-content">Phase One:<br/>
+                        Launch the sci-fi novel Styx <br/>
+                        and build a metaverse inspired by its universe.</div>
+                </div>
             </div>
+        </div>
+        <div class="section" style="z-index:1;">
+            <div class="subtitle_section">
+                <div class="subtitle_column">
+                    <div class="section-img">Toolkit & Ecosystem</div>
+                    <div class="section-content">Phase Two:<br/>
+                        Build a creative toolkit <br/>
+                        and establish a content creation ecosystem.</div>
+                </div>
             </div>
         </div>
         <div class="section" style="z-index:1;">
-            <div class="section-img">Toolkit & Ecosystem</div>
-            <div class="section-content">Phase Two:<br/>
-                Build a creative toolkit <br/>
-                and establish a content creation ecosystem.</div>
+            <div class="subtitle_section">
+                <div class="subtitle_column_right">
+                    <div class="section-img">AI & Decentralized</div>
+                    <div class="section-content">Phase Three:<br/>
+                        Leveraging AI to enhance the capabilities, fairness, and impartiality of content moderation and rating systems,<br/>
+                        and establish a decentralized ecological network.</div>
+                </div>
+            </div>
         </div>
         <div class="section" style="z-index:1;">
-            <div class="section-img">AI & Decentralized</div>
-            <div class="section-content">Phase Three:<br/>
-                Leveraging AI to enhance the capabilities, fairness, and impartiality of content moderation and rating systems,<br/>
-                and establish a decentralized ecological network.</div>
-        </div>
-        <div class="section" style="z-index:1;">
-            <div class="section-img">More</div>
-            <div class="section-content">
-                <div style="margin-bottom:1vw;">Twitter: <a href='https://twitter.com/sfbox' target='_blank' style='color:#0a1833;'>@sfbox</a></div>
-                <div style="margin-bottom:1vw;">GitHub: <a href='https://github.com/sfbox' target='_blank' style='color:#0a1833;'>sfbox</a></div>
-                <div style="margin-bottom:1vw;">Telegram: <a href='https://t.me/sfbox' target='_blank' style='color:#0a1833;'>@sfbox</a></div>
+            <div class="subtitle_section">
+                <div class="app-img-wrapper">
+                    <div class="app-img"><a href='https://github.com/sf-box' target='_blank' style='color:#0a1833;'>G</a></div>
+                </div>
+                <div class="app-img-wrapper">
+                    <div class="app-img">X</div>
+                </div>
+                <div class="app-img-wrapper">
+                    <div class="app-img">F</div>
+                </div>
+                <div class="app-img-wrapper">
+                    <div class="app-img">L</div>
+                </div>
+                <div class="app-img-wrapper">
+                    <div class="app-img"><a href='https://twitter.com/sfbox' target='_blank' style='color:#0a1833;'>T</a></div>
+                </div>
             </div>
         </div>
     </div>
