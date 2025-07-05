@@ -65,10 +65,16 @@
             background-repeat: no-repeat;
         }
         .section:nth-child(3) {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: url('./imgs/toolkit_bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         .section:nth-child(4) {
-            background: linear-gradient(135deg, #2a5298 0%, #f7971e 100%);
+            background: url('./imgs/ai_bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         /* .section:nth-child(5) {
             background: linear-gradient(135deg, #232526 0%, #414345 100%);
@@ -158,6 +164,42 @@
             box-shadow: 0 2px 16px rgba(10,24,51,0.08);
             user-select: none;
         }
+        .section-img-green {
+            width: 18vw;
+            height: 18vw;
+            max-width: 240px;
+            max-height: 240px;
+            background: #007c00;
+            border-radius: 1vw;
+            margin-bottom: 2vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3vw;
+            color: #ffffff;
+            box-shadow: 0 2px 16px rgba(0,128,0,0.08);
+            user-select: none;
+        }
+        .section-img-black {
+            width: 18vw;
+            height: 18vw;
+            max-width: 240px;
+            max-height: 240px;
+            background: #000000;
+            border-radius: 1vw;
+            margin-bottom: 2vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3vw;
+            color: #ffffff;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            user-select: none;
+            background-image: url('./imgs/ai_logo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
         .section-content {
             font-size: 2vw;
             color: #fff;
@@ -169,6 +211,19 @@
             min-height: 5vw;
             max-width: 60vw;
             text-align: left;
+        }
+        .section-content-black {
+            font-size: 2vw;
+            color: #000;
+            /* background: rgba(255,255,255,0.7); */
+            /* border-radius: 1vw; */
+            /* box-shadow: 0 2px 16px rgba(10,24,51,0.08); */
+            /* padding: 2vw 3vw; */
+            line-height: 1.7;
+            min-height: 5vw;
+            max-width: 60vw;
+            text-align: left;
+            /* text-shadow: 0 4px 32px rgb(255, 255, 255); */
         }
         @media (max-width: 600px) {
             .main-title { font-size: 24vw; }
@@ -207,8 +262,8 @@
         </div>
         <div class="section" style="z-index:1;">
             <div class="subtitle_section">
-                <div class="subtitle_column">
-                    <div class="section-img">Toolkit & Ecosystem</div>
+                <div class="subtitle_column_right">
+                    <div class="section-img-green">Toolkit & Ecosystem</div>
                     <div class="section-content">Phase Two:<br/>
                         Build a creative toolkit <br/>
                         and establish a content creation ecosystem.</div>
@@ -217,9 +272,12 @@
         </div>
         <div class="section" style="z-index:1;">
             <div class="subtitle_section">
-                <div class="subtitle_column_right">
-                    <div class="section-img">AI & Decentralized</div>
-                    <div class="section-content">Phase Three:<br/>
+                <div class="subtitle_column">
+                    <div class="section-img-black">AI & Decentralized</div>
+                     <!-- <div class="section-img">
+                <img src="./imgs/ai_logo.png" alt="Styx" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1vw;">
+            </div> -->
+                    <div class="section-content-black">Phase Three:<br/>
                         Leveraging AI to enhance the capabilities, fairness, and impartiality of content moderation and rating systems,<br/>
                         and establish a decentralized ecological network.</div>
                 </div>
@@ -405,7 +463,61 @@
         window.addEventListener('touchstart', handleTouchStart);
         window.addEventListener('touchend', handleTouchEnd);
     })();
-        </script>
+
+    // 绘制转动地球
+    function drawRotatingEarth() {
+        const canvas = document.getElementById('earth-canvas');
+        const ctx = canvas.getContext('2d');
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const radius = 100;
+        let rotation = 0;
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 绘制地球轮廓
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.strokeStyle = '#4ecdc4';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 绘制经纬线
+            for (let i = 0; i < 8; i++) {
+                const angle = (i * Math.PI / 4) + rotation;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius * Math.cos(angle), 0, 2 * Math.PI);
+                ctx.strokeStyle = '#45b7d1';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+            
+            // 绘制粒子点
+            for (let i = 0; i < 20; i++) {
+                const lat = (Math.random() - 0.5) * Math.PI;
+                const lon = (Math.random() - 0.5) * 2 * Math.PI + rotation;
+                const x = centerX + radius * Math.cos(lat) * Math.cos(lon);
+                const y = centerY + radius * Math.sin(lat);
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 2, 0, 2 * Math.PI);
+                ctx.fillStyle = '#fff';
+                ctx.fill();
+            }
+            
+            rotation += 0.02;
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+    }
+
+    // 页面加载完成后启动地球动画
+    window.addEventListener('load', () => {
+        drawRotatingEarth();
+    });
+    </script>
 </body>
 </html>
 
